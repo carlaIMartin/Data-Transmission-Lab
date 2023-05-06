@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <title>Baseband Encoder</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div id="baseband-encoder">
+        <ul v-for="(bit, index) in bits">
+            <li>
+                <input 
+                     
+                    v-on:change="allEncodings()"
+                    maxlength="1" :placeholder="'B'+index" v-model="bit.value"
+                    v-bind:class="[validateBit(bit.value) ? 'valid-input' : 'invalid-input']" />
+            </li>
+        </ul>
+        
+        <p>Baseband code representation: <code class="encoded">{{encodedBits.join('')}}</code></p>
+
+        <p>Non Return To Zero Level  : <code class = "nrzl">{{nrzlBits.join('')}}</code></p>
+
+        <p>Non Return To Zero Mark code : <code class = "nrzm">{{nrzmBits.join('')}}</code></p>
+        
+        <p>Return To Zero code : <code class = "nrzm">{{rzBits.join('')}}</code></p>
+
+    </div>
+
+    <script type="text/javascript" src="libs/vue.js"></script>
+    <script type="text/javascript" src="libs/axios.js"></script>
+    <script type="text/javascript" src="js/helpers.js"></script>
+    <script type="text/javascript" src="js/baseband-codes.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
